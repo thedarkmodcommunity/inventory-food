@@ -1,0 +1,391 @@
+ // Object hierarchy for edible food that goes into player inventory
+
+// the def_heal object determines the healing amount (not heal_amount).
+// You need to create a new def_heal object for each food item that has
+// a different heal amount.  Overriding the heal_amount spawnarg doesn't
+// work (think that only works for moveable food, not heal items like we're using here).
+
+entityDef fs:food
+{
+	"inherit"				"atdm:playertools_heal_item"
+
+	"editor_usage"			"Don't use. Base class for inventory-enabled food."
+	"editor_displayFolder"	"Moveables/Food"
+
+	//Inventory stuff
+
+	"inv_droppable"			"1"
+	"drop_to_hands"			"1"
+	"inv_category"			"Food"
+	"inv_stackable"			"1"
+
+	// make all food sound the same when bouncing as there
+	// aren't a lot of options
+	"snd_bounce"			"tdm_impact_fruit"
+	"snd_bounce_wood"		"tdm_impact_fruit"
+}
+
+////////////
+//// MEAT
+////////////
+
+// def_heal object
+heal_food_meat
+{
+	"inherit"					"heal_generic"
+	"editor_usage"				"def_heal object for edible meat"
+	"heal_amount"				"5"
+	"heal_interval"				"1000"
+	"heal_step_amount"			"1"
+}
+
+entityDef fs:food_meat_base
+{
+	"inherit"				"fs:food"
+	"editor_usage"			"Don't use. Base class for inventory-enabled meat."
+
+	"mass"					"0.5"
+	"def_heal"				"heal_food_meat"
+
+	"snd_swallow"			"tdm_player_bread_crunch"
+
+	"bouncyness"			"0.06"
+}
+
+entityDef fs:food_salami
+{
+	"inherit"				"fs:food_meat_base"
+	"model"					"models/darkmod/kitchen/food/salami_stick_001.lwo"
+
+	"inv_name"				"Salami"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_salami"
+}
+
+entityDef fs:food_venison_leg
+{
+	"inherit"				"fs:food_meat_base"
+	"model"					"models/darkmod/kitchen/food/deer_leg_001.lwo"
+
+	"inv_name"				"Venison leg"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_venison_leg"
+}
+
+entityDef fs:food_sausages
+{
+	"inherit"				"fs:food_meat_base"
+	"model"					"models/darkmod/kitchen/food/beef_links_hanging_002.lwo"
+
+	"inv_name"				"Sausages"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_sausages"
+}
+
+////////////
+//// FISH
+////////////
+
+// def_heal object
+heal_food_fish
+{
+	"inherit"					"heal_generic"
+	"editor_usage"				"def_heal object for edible fish"
+	"heal_amount"				"5"
+	"heal_interval"				"1000"
+	"heal_step_amount"			"1"
+}
+
+entityDef fs:food_fish_base
+{
+	"inherit"				"fs:food"
+	"editor_usage"			"Don't use. Base class for inventory-enabled fish."
+
+	"mass"					"0.5"
+	"def_heal"				"heal_food_fish"
+
+	"snd_swallow"			"tdm_player_bread_crunch"
+
+	"bouncyness"			"0.06"
+}
+
+entityDef fs:food_bluefish
+{
+	"inherit"				"fs:food_fish_base"
+	"model"					"models/darkmod/kitchen/food/fish_bluefish.lwo"
+
+	"inv_name"				"Bluefish"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_bluefish"
+}
+
+entityDef fs:food_mackerel
+{
+	"inherit"				"fs:food_fish_base"
+	"model"					"models/darkmod/kitchen/food/fish_mackerel.lwo"
+
+	"inv_name"				"Mackerel"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_mackerel"
+}
+
+
+//////////////////////////////
+//// VEGETABLES
+//////////////////////////////
+
+// def_heal object
+heal_food_veg
+{
+	"inherit"					"heal_generic"
+	"editor_usage"				"def_heal object for edible vegetables"
+	"heal_amount"				"1"
+	"heal_interval"				"1000"
+	"heal_step_amount"			"1"
+}
+
+entityDef fs:food_veg_base
+{
+	"inherit"				"fs:food"
+	"editor_usage"			"Don't use. Base class for inventory-enabled vegetables."
+
+	"mass"					"0.2"
+	"def_heal"				"heal_food_veg"
+
+	"snd_swallow"			"tdm_player_carrot_crunch"
+
+	"sprS_eaten"			"sprGS_food_bite:4"
+	"bouncyness"			"0.06"
+}
+
+entityDef fs:food_aubergine
+{
+	"inherit"				"fs:food_veg_base"
+	"model"					"models/darkmod/kitchen/food/eggplant_001.lwo"
+
+	"inv_name"				"Aubergine"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_aubergine"
+}
+
+entityDef fs:food_carrot
+{
+	"inherit"				"fs:food_veg_base"
+	"model"					"models/darkmod/kitchen/food/carrot.lwo"
+
+	"inv_name"				"Carrot"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_carrot"
+}
+
+entityDef fs:food_turnip
+{
+	"inherit"				"fs:food_veg_base"
+	"model"					"models/darkmod/kitchen/food/turnip.ase"
+
+	"inv_name"				"Turnip"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_turnip"
+}
+
+entityDef fs:food_pumpkin
+{
+	"inherit"				"fs:food_veg_base"
+	"model"					"models/darkmod/kitchen/food/pumpkin02.lwo"
+	"clipmodel"				"models/darkmod/misc/clipmodels/pumpkin_cm.lwo"
+
+	"inv_name"				"Pumpkin"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_pumpkin"
+}
+
+entityDef fs:food_cucumber
+{
+	"inherit"				"fs:food_veg_base"
+	"model"					"models/darkmod/kitchen/food/cucumber_001.lwo"
+
+	"inv_name"				"Cucumber"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_cucumber"
+}
+
+//////////////////////////////
+//// FRUIT
+//////////////////////////////
+
+heal_food_fruit
+{
+	"inherit"					"heal_generic"
+	"editor_usage"				"def_heal object for edible fruit"
+	"heal_amount"				"1"
+	"heal_interval"				"1000"
+	"heal_step_amount"			"1"
+}
+
+entityDef fs:food_fruit_base
+{
+	"inherit"				"fs:food"
+	"editor_usage"			"Don't use. Base class for inventory-enabled fruit."
+
+	"mass"					"0.2"
+	"snd_swallow"			"tdm_player_apple_crunch"
+
+	"def_heal"				"heal_food_fruit"
+
+	"sprS_eaten"			"sprGS_food_bite:4"
+	"bouncyness"			"0.06"
+}
+
+entityDef fs:food_apple
+{
+	"inherit"				"fs:food_fruit_base"
+	"model"					"models/darkmod/kitchen/food/apple.lwo"
+
+	"inv_name"				"Apple"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_apple"
+}
+
+entityDef fs:food_pear
+{
+	"inherit"				"fs:food_fruit_base"
+	"model"					"models/darkmod/kitchen/food/pear.lwo"
+
+	"inv_name"				"Pear"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_pear"
+}
+
+entityDef fs:food_banana
+{
+	"inherit"				"fs:food_fruit_base"
+	"model"					"models/darkmod/kitchen/food/banana_001.lwo"
+
+	"inv_name"				"Banana"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_banana"
+}
+
+entityDef fs:food_grapes
+{
+	"inherit"				"fs:food_fruit_base"
+	"model"					"models/darkmod/kitchen/food/grape_cluster_001.lwo"
+
+	"inv_name"				"Grapes"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_grapes"
+}
+
+//////////////////////////////
+//// CHEESE
+//////////////////////////////
+
+heal_food_cheese_wedge
+{
+	"inherit"					"heal_generic"
+	"editor_usage"				"def_heal object for edible cheese wedge"
+	"heal_amount"				"2"
+	"heal_interval"				"1000"
+	"heal_step_amount"			"1"
+}
+
+heal_food_cheese_wheel
+{
+	"inherit"					"heal_generic"
+	"editor_usage"				"def_heal object for edible cheese wheel"
+	"heal_amount"				"5"
+	"heal_interval"				"1000"
+	"heal_step_amount"			"1"
+}
+
+entityDef fs:food_cheese_base
+{
+	"inherit"				"fs:food"
+	"editor_usage"			"Don't use. Base class for inventory-enabled cheese."
+
+	"snd_swallow"			"tdm_player_bread_crunch"
+}
+
+entityDef fs:food_cheese_wedge
+{
+	"inherit"				"fs:food_cheese_base"
+	"model"					"models/darkmod/kitchen/food/cheese_wedge.lwo"
+
+	"inv_name"				"Cheese wedge"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_cheese"
+
+	"def_heal"				"heal_food_cheese_wedge"
+}
+
+entityDef fs:food_cheese_wheel
+{
+	"inherit"				"fs:food_cheese_base"
+	"model"					"models/darkmod/kitchen/food/cheese_wheel.lwo"
+
+	"inv_name"				"Cheese wheel"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_cheese_wheel"
+
+	"def_heal"				"heal_food_cheese_wheel"
+}
+
+//////////////////////////////
+//// BREAD
+//////////////////////////////
+
+heal_food_muffin
+{
+	"inherit"					"heal_generic"
+	"editor_usage"				"def_heal object for edible small muffin"
+	"heal_amount"				"1"
+	"heal_interval"				"1000"
+	"heal_step_amount"			"1"
+}
+
+heal_food_bread_small
+{
+	"inherit"					"heal_generic"
+	"editor_usage"				"def_heal object for edible small bread"
+	"heal_amount"				"2"
+	"heal_interval"				"1000"
+	"heal_step_amount"			"1"
+}
+
+heal_food_bread_large
+{
+	"inherit"					"heal_generic"
+	"editor_usage"				"def_heal object for edible large bread"
+	"heal_amount"				"5"
+	"heal_interval"				"1000"
+	"heal_step_amount"			"1"
+}
+
+entityDef fs:food_bread_base
+{
+	"inherit"				"fs:food"
+	"editor_usage"			"Don't use. Base class for inventory-enabled bread."
+
+	"snd_swallow"			"tdm_player_bread_crunch"
+}
+
+entityDef fs:food_bread_small
+{
+	"inherit"				"fs:food_bread_base"
+	"model"					"models/darkmod/kitchen/food/cake.lwo"
+
+	"def_heal"				"heal_food_bread_small"
+
+	//Inventory stuff
+	"inv_name"				"Bread (small)"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_bread_small"
+}
+
+entityDef fs:food_bread_large
+{
+	"inherit"				"fs:food_bread_base"
+	"model"					"models/darkmod/kitchen/food/bread_loaf01.lwo"
+
+	"def_heal"				"heal_food_bread_large"
+	
+	//Inventory stuff
+	"inv_name"				"Bread (large)"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_bread"
+}
+
+entityDef fs:food_muffin
+{
+	"inherit"				"fs:food_bread_base"
+	"model"					"models/darkmod/kitchen/food/muffin.lwo"
+
+	"def_heal"				"heal_food_muffin"
+	
+	//Inventory stuff
+	"inv_name"				"Muffin"
+	"inv_icon"				"guis/assets/hud/inventory_icons/food_muffin"
+}
+
